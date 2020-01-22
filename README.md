@@ -27,12 +27,12 @@ public class BloggingContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         // enable auto history functionality.
-        modelBuilder.EnableAutoHistory();
+        modelBuilder.EnableAutoHistory(null);
     }
 }
 ```
 
-3. Ensure AutoHistory in DbContext. This must be called before bloggingContext.SaveChanges() or bloggingContext.SaveChangesAsync().
+3. Ensure AutoHistory in DbContext. This must be called before bloggingContext.SaveChanges() or bloggingContext.SaveChangesAsync(). Attention when using unit of work.
 
 ```csharp
 bloggingContext.EnsureAutoHistory()
